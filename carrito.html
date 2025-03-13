@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito - Mi Tienda Online</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/carrito.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">E-commerce</div>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="catalogo.html">Catálogo</a></li>
+                <li><a href="carrito.html">Carrito</a></li>
+                <li><a href="favoritos.html">Favoritos</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="carrito-container">
+            <h1>Tu Carrito de Compras</h1>
+            <div class="contenedor-principal">
+                <section class="lista-productos" id="lista-productos">
+                    <p class="mensaje-vacio">Tu carrito está vacío.</p>
+                </section>
+            
+                <aside class="resumen-carrito">
+                    <h2>Resumen del Carrito</h2>
+                    <p>Subtotal: <span class="subtotal">0.00 Bs</span></p>
+                    <p>Envío: <span class="envio">50.00 Bs</span></p>
+                    <p class="total">Total: <span>50.00 Bs</span></p>
+                    <button class="btn-comprar">Proceder al Pago</button>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <!-- Ventana modal principal para selección de método de pago -->
+    <div id="modal-pago" class="modal">
+        <div class="modal-contenido">
+            <span class="cerrar-modal">&times;</span>
+            <h2>Resumen del Pedido</h2>
+            
+            <div class="resumen-pedido">
+                <p>Subtotal: <span class="subtotal-modal">0.00 Bs</span></p>
+                <p>Envío: <span class="envio-modal">50.00 Bs</span></p>
+                <p class="total-modal">Total: <span>50.00 Bs</span></p>
+            </div>
+
+            <h2>Selecciona tu método de pago</h2>
+            <div class="metodos-pago">
+                <button id="pagar-tarjeta">
+                    <i class="fas fa-credit-card"></i> Tarjeta de Crédito/Débito
+                </button>
+                <button id="pagar-paypal">
+                    <i class="fab fa-paypal"></i> Pagar con PayPal
+                </button>
+                <button id="pagar-crypto">
+                    <i class="fas fa-coins"></i> Pagar con Criptomonedas
+                </button>
+                <button id="pagar-qr">
+                    <i class="fas fa-qrcode"></i> Pagar con QR
+                </button>
+            </div>
+
+            <button class="btn-confirmar">Confirmar Pedido</button>
+        </div>
+    </div>
+
+    <!-- Modal para Tarjeta de Crédito/Débito -->
+    <div id="modal-tarjeta" class="modal">
+        <div class="modal-contenido">
+            <span class="cerrar-modal" onclick="document.getElementById('modal-tarjeta').style.display = 'none'">&times;</span>
+            <h2>Pagar con Tarjeta</h2>
+            <form id="form-tarjeta">
+                <div class="form-group">
+                    <label for="numero-tarjeta">Número de Tarjeta</label>
+                    <input type="text" id="numero-tarjeta" placeholder="1234 5678 9012 3456" required>
+                </div>
+                <div class="form-group">
+                    <label for="fecha-expiracion">Fecha de Expiración</label>
+                    <input type="text" id="fecha-expiracion" placeholder="MM/AA" required>
+                </div>
+                <div class="form-group">
+                    <label for="cvv">CVV</label>
+                    <input type="text" id="cvv" placeholder="123" required>
+                </div>
+                <button type="submit">Pagar</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal para PayPal -->
+    <div id="modal-paypal" class="modal">
+        <div class="modal-contenido">
+            <span class="cerrar-modal" onclick="document.getElementById('modal-paypal').style.display = 'none'">&times;</span>
+            <h2>Pagar con PayPal</h2>
+            <form id="form-paypal">
+                <div class="form-group">
+                    <label for="correo-paypal">Correo de PayPal</label>
+                    <input type="email" id="correo-paypal" placeholder="usuario@example.com" required>
+                </div>
+                <button type="submit">Continuar a PayPal</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal para Criptomonedas -->
+    <div id="modal-cripto" class="modal">
+        <div class="modal-contenido">
+            <span class="cerrar-modal" onclick="document.getElementById('modal-cripto').style.display = 'none'">&times;</span>
+            <h2>Pagar con Criptomonedas</h2>
+            <form id="form-cripto">
+                <div class="form-group">
+                    <label for="wallet-crypto">ID de Wallet</label>
+                    <input type="text" id="wallet-crypto" placeholder="1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa" required>
+                </div>
+                <div class="form-group">
+                    <label for="criptomoneda">Selecciona tu criptomoneda:</label>
+                    <select id="criptomoneda">
+                        <option value="Bitcoin">Bitcoin</option>
+                        <option value="Ethereum">Ethereum</option>
+                        <option value="USDT">USDT</option>
+                    </select>
+                </div>
+                <button type="submit">Pagar</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="modal-qr" class="modal">
+        <div class="modal-contenido">
+            <span class="cerrar-modal" onclick="document.getElementById('modal-qr').style.display = 'none'">&times;</span>
+            <h2>Pagar con QR</h2>
+            <form id="form-qr">
+                <div class="form-group">
+                    <label for="wallet-qr">ID de Wallet</label>
+                    <input type="text" id="wallet-qr" placeholder="1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa" required>
+                </div>
+                <p>Escanea el siguiente código QR para completar tu pago:</p>
+                <img src="qr-code.png" alt="Código QR" style="width: 200px; height: 200px;">
+                <button type="submit">Pagar</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Proyecto E-commerce. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="js/carrito.js"></script>
+</body>
+</html>
